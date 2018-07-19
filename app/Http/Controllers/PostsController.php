@@ -8,7 +8,7 @@ use Auth;
 
 use App\Post;
 use App\Comment;
-use App\User;
+use App\Category;
 
 
 class PostsController extends Controller
@@ -49,8 +49,10 @@ class PostsController extends Controller
 
         $create = true;
 
+        $categories = Category::all();
 
-        return view('posts.post-form', compact('create', 'user'));
+
+        return view('posts.post-form', compact('create', 'user', 'categories'));
 
     }
 
@@ -114,7 +116,9 @@ class PostsController extends Controller
 
         $create = false;
 
-        return view('posts.post-form', compact('user', 'post', 'create'));
+        $categories = Category::all();
+
+        return view('posts.post-form', compact('user', 'post', 'create', 'categories'));
 
     }
 

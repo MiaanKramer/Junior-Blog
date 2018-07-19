@@ -3,32 +3,33 @@
 
 @section('content')
 
-    <div class="container">
-        <h1>Your Posts</h1>
-        <a href="posts/create" class="btn btn-primary pull-right">Create Post</a>
-        <p class="lead">All your posts will be displayed here.</p>
-        <hr>
-        @foreach ($posts as $post)
-            <div class="panel panel-info">
-                    <a class="glyphicon glyphicon-remove btn pull-right" data-toggle="modal" data-target="#{{ $post->id }}"></a>
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ $post->title }} <span class="badge">{{ $post->comments_count }}</span></h3>
-                    <h3 class="panel-title"><small>({{ $post->category->title }})</small></h3>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 class="display-4">Your Posts</h1>
+                <p class="lead">All your posts are displayed here.</p>
+                <hr class="my-4">
+                <p>Click the button to create a new post.</p>
+                <a class="btn btn-primary btn-lg" href="/posts/create" role="button">Create Post</a>
+            </div>
+            @foreach ($posts as $post)
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <a class="btn float-right" data-toggle="modal" data-target="#{{ $post->id }}"><span>&#10007;</span></a>
+                    <h3>{{ $post->title }} <small>({{ $post->category->title }})</small></h3>
                 </div>
-                <div class="panel-body">
-                    {{ $post->body }}
-                </div>
-                <div class="panel-footer">
-                    <a href="posts/{{ $post->id }}" class="btn btn-primary">View Post</a>
-                    <a href="posts/{{ $post->id }}/edit" class="btn btn-info">Edit</a>
-                </div>
-                <div class="text-center">
+                <div class="card-body">
+                    <p class="card-text">{{ $post->body }}</p>
+                    <hr class="my-4">
+                    <a href="posts/{{ $post->id }}" class="btn btn-primary btn-lg">View Post</a>
+                    <a href="posts/{{ $post->id }}/edit" class="btn btn-info btn-lg ">Edit</a>
                 </div>
             </div>
-        @endforeach
+            <hr>
+            @endforeach
+            {{ $posts->links() }}
+        </div>
 
-        {{ $posts->links() }}
-    </div>
+
     <div id="confirmModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="panel panel-info">
@@ -48,5 +49,4 @@
 
         </div>
     </div>
-
 @endsection
