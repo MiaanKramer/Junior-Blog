@@ -11,10 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/categories', 'CategoryController@index');
+
+Route::get('/categories/{category}', 'CategoryController@show');
+
+
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::resource('posts', 'PostsController')->middleware(['auth']);
