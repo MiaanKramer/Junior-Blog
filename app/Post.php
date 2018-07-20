@@ -22,6 +22,6 @@ class Post extends Model
         return $query->where('category_id', $category_id);
     }
 
-    protected $fillabel = ['title', 'body'];
+    protected $fillable = ['title', 'body'];
     // Category??
 }

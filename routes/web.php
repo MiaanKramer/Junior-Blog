@@ -21,8 +21,6 @@ Route::get('/categories', 'CategoryController@index');
 Route::get('/categories/{category}', 'CategoryController@show');
 
 
-Route::get('/', function(){
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::resource('posts', 'PostsController')->middleware(['auth']);

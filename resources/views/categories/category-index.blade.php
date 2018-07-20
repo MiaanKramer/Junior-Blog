@@ -4,8 +4,12 @@
 
 <div class="container">
     <div class="row">
-        @foreach
-            
+        @foreach ($categories as $category)
+            <a href="{{ $category->title }}">
+                <div class="card-header bg-primary">
+                    {{ $category->title }}
+                </div>
+            </a>
         @endforeach
     </div>
 </div>

@@ -45,7 +45,7 @@ class PostsController extends Controller
     {
         // view the create form
 
-        $user = Auth::user();
+        $user = $this->user();
 
         $create = true;
 
@@ -65,12 +65,22 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         // do an actual post, redirect to post detail
-        dd($request);
 
         $this->validate($request, [
             'title' => 'required|min:2',
             'body' => 'required|min:10',
         ]);
+
+        $user = $this->user();
+
+        $post = new Post;
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->category_id = $request->category;
+        $post->user_id = $user->id;
+
+        $post->save();
 
         return redirect()->route('posts.index');
 
@@ -138,6 +148,17 @@ class PostsController extends Controller
             'body' => 'required|min:10',
         ]);
 
+        
+        $post = Post::findOrFail($id);
+
+        $this->authorize('update', $post);
+        
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+        $post->update();
+
+
         return redirect()->route('posts.index');
     }
 
@@ -153,9 +174,11 @@ class PostsController extends Controller
         $user = Auth::user();
         $post = Post::findOrFail($id);
 
-        if($user->id !== $post->user_id){
-            abort(400, 'You are not the owner of this post.');
-        }
+        $this->authorize('delete', $post);
+
+        // if($user->id !== $post->user_id){
+        //     abort(400, 'You are not the owner of this post.');
+        // }
 
         $post->delete();
 
