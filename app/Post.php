@@ -14,6 +14,10 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function scopeForUser($query, $user_id){
         return $query->where('user_id', $user_id);
     }

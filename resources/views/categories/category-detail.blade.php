@@ -1,16 +1,10 @@
-@extends ('layout')
+@extends ('layouts.app')
 
 @section ('content')
 
 <div class="container">
-    <div class="row">
-        @foreach ($categories as $category)
-            <a href="{{ $category->title }}">
-                <div class="card-header bg-primary">
-                    {{ $category->title }}
-                </div>
-            </a>
-        @endforeach
+    <div class="jumbotron">
+        <h1><strong>{{ $category->title }}</strong> <small>({{ $posts->count() }} {{ $posts->count() > 1 ? 'Posts' : 'Post' }})</small></h1>
     </div>
 </div>
 

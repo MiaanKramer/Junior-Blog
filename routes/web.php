@@ -16,11 +16,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/categories', 'CategoryController@index');
+Route::resource('posts', 'PostsController')->middleware(['auth']);
 
-Route::get('/categories/{category}', 'CategoryController@show');
+Route::resource('categories', 'CategoryController')->middleware(['auth']);;
 
 
 Route::get('/', 'HomeController@index');
-
-Route::resource('posts', 'PostsController')->middleware(['auth']);
