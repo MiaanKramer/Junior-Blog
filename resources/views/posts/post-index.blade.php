@@ -5,8 +5,8 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1 class="display-4">Your Posts</h1>
-            <p class="lead">All your posts are displayed here.</p>
+            <h1 class="display-4">My Posts</h1>
+            <p class="lead">My posts are displayed here.</p>
             <hr class="my-4">
             <p>Click the button to create a new post.</p>
             <a class="btn btn-primary btn-lg" href="/posts/create" role="button">Create Post</a>

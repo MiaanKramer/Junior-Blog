@@ -23,7 +23,7 @@ class PostPolicy
     }
 
     /**
-     * Determine whether the user can create posts.
+     * Determine whether the sser can create posts.
      *
      * @param  \App\User  $user
      * @return mixed

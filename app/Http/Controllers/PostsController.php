@@ -20,12 +20,19 @@ class PostsController extends Controller
      */
 
 
+    public function myPosts() {
+
+
+
+    }
+
     public function index()
     {
 
         $user = $this->user();
 
-        $posts = Post::forUser($user->id)
+        $posts = Post::forUser($user)
+                ->orderBy('created_at', 'asc')
                 ->withCount('comments')
                 ->with(['category'])
                 ->get();
