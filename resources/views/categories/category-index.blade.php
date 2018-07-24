@@ -5,8 +5,8 @@
 <div class="container">
 
     <div class="jumbotron">
-        <h1>Categories</h1>
-        <h1><small>Click to see overview</small></h1>
+        <h1 class="display-4">Categories</h1>
+        <p class="lead">Click a category to get a detailed overview</p>
     </div>
     <div class="row">
         @foreach ($categories as $category)

@@ -47,7 +47,7 @@
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-info">Yes</button>
                     </form>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
