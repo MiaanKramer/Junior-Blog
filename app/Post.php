@@ -2,7 +2,10 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
+
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -24,6 +27,12 @@ class Post extends Model
 
     public function scopeForCategory($query, $category_id){
         return $query->where('category_id', $category_id);
+    }
+
+    public function formatDate() {
+
+        return Carbon::parse($this->created_at)->diffForHumans();
+        
     }
 
     protected $fillable = ['title', 'body'];

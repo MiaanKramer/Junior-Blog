@@ -15,10 +15,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/about', 'HomeController@about')->name('about');
+
+Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::resource('posts', 'PostsController')->middleware(['auth']);
 
-Route::resource('categories', 'CategoryController')->middleware(['auth']);;
-
+Route::resource('categories', 'CategoryController')->middleware(['auth']);
 
 Route::get('/', 'HomeController@index');
+
+
